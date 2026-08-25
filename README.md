@@ -1,77 +1,99 @@
 # proj-sf-AccountDirectory
+
 Salesforce projects and Trailhead-related work developed as part of my software engineering studies.
 
-# Account Search Directory (LWC)
+## Account Search Directory (LWC)
 
-## What I Built
-A responsive Salesforce Lightning Web Component (LWC) that serves as a dynamic directory for Account records. The component provides a highly optimized, user-friendly interface to search and sort Accounts in real-time.
+### What I Built
+
+A responsive Salesforce Lightning Web Component (LWC) that works as a searchable directory for Account records. It allows users to search and sort accounts while providing clear feedback during loading, when errors occur, or when no results are found.
 
 **Key Features:**
-* **Real-time Search:** Filters records dynamically by Account Name.
-* **Dynamic Sorting:** Allows users to sort by Name, Industry, or Phone in both Ascending and Descending order.
-* **UX State Management:** Includes robust visual feedback using SLDS, featuring loading states (spinners) during data fetching, error states, and empty states when no records match the criteria.
-* **Responsive Design:** Displays data in an elegant, responsive grid of cards that adapts to desktop and mobile screens.
 
-## How I Built It
-This project was built following Clean Code principles, focusing on security, performance, and maintainability.
+- **Real-time Search:** Filters accounts dynamically by Account Name.
+- **Dynamic Sorting:** Allows users to sort accounts by Name, Industry, or Phone in ascending or descending order.
+- **UX State Management:** Provides visual feedback using SLDS, including loading spinners, error messages, and empty states when no accounts match the search.
+- **Responsive Design:** Displays account information in a responsive card-based layout that adapts to different screen sizes.
 
-* **Frontend (LWC):** Built using modern JavaScript and HTML. I utilized the Salesforce Lightning Design System (SLDS) for styling to maintain platform consistency without relying on custom CSS. I implemented a **debounce function (300ms)** in the JavaScript controller to delay server calls while the user is typing, significantly reducing server load.
-* **Backend (Apex):** Created an Apex Controller (`AccountSearchController.cls`) using the `@AuraEnabled(cacheable=true)` decorator, which caches the method's results on the client so repeated searches can reuse cached data instead of always round-tripping to the server.
-* **Security & Best Practices:**
-  * The Apex class uses `with sharing` and the SOQL query enforces `WITH USER_MODE` to strictly respect user Field-Level Security (FLS) and Object permissions.
-  * Prevented SOQL Injection by utilizing bind variables (`:searchPattern`) and implementing strict Apex-level whitelisting for the dynamic sorting fields.
-  * Avoided "magic numbers" by using constants and documented the code thoroughly using JSDoc and ApexDoc.
-* **Testing:** Included an Apex Test Class (`AccountSearchControllerTest.cls`) to ensure search logic, sorting behavior, and security fallbacks function properly.
+### How I Built It
 
-## How to Install and Run
+The component was developed with a focus on clean code, security, performance, and maintainability.
 
-### Prerequisites
-* [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli) installed.
-* Visual Studio Code with the **Salesforce Extension Pack** installed.
-* A Salesforce Sandbox or Developer Edition Org.
+- **Frontend (LWC):** Built with JavaScript and HTML, using the Salesforce Lightning Design System (SLDS) for styling and platform consistency. A **300 ms debounce function** was added to delay server requests while the user is typing, reducing unnecessary calls to the backend.
 
-### Installation Steps
-1. **Create a Salesforce Project:**
-   Open VS Code, press `Ctrl+Shift+P` (or `Cmd+Shift+P`), run `SFDX: Create Project`, and choose the Standard template.
-2. **Authorize your Org:**
-   Run `SFDX: Authorize an Org` in the command palette and log into your Salesforce environment.
-3. **Deploy the Backend (Apex):**
-   * Copy `AccountSearchController.cls` and `AccountSearchControllerTest.cls` into the `classes` folder of your local project.
-   * Right-click the `classes` folder and select **SFDX: Deploy Source to Org**.
-4. **Deploy the Frontend (LWC):**
-   * Create the LWC named `accountSearchDirectory`.
-   * Copy in the HTML, JS, and `.js-meta.xml` files.
-   * Right-click the `lwc` folder and select **SFDX: Deploy Source to Org**.
+- **Backend (Apex):** Implemented an Apex controller (`AccountSearchController.cls`) using `@AuraEnabled(cacheable=true)`. This allows Salesforce to cache results on the client and reuse them when possible instead of making a new server request for every search.
 
-### How to Run (UI Setup)
-1. Log in to your Salesforce Org and navigate to any app with a Home page (e.g., the **Sales** app).
-2. Go to the **Home** tab.
-3. Click the **Gear icon** (Setup) in the top right corner and select **Edit Page** to open the Lightning App Builder.
-4. On the left sidebar, scroll down to the **Custom** components section.
-5. Drag and drop the **Account Search Directory** component onto the page layout.
-6. Click **Save** in the top right corner.
-7. Click **Activate**, choose **Assign as Org Default**, and save your changes.
-8. Click the back arrow to return to the Home page and use your new component!
+- **Security and Best Practices:**
+  - The Apex class uses `with sharing`, and the SOQL query uses `WITH USER_MODE` to respect the user's object and field-level permissions.
+  - SOQL injection is prevented through bind variables (`:searchPattern`) and a whitelist of allowed fields for dynamic sorting.
+  - Constants are used instead of hard-coded values where appropriate, and the code includes JSDoc and ApexDoc documentation.
 
-# Salesforce Account Directory (Local React App)
+- **Testing:** Includes an Apex test class (`AccountSearchControllerTest.cls`) that covers the search logic, sorting behavior, and security-related fallbacks.
 
-## What I Built
-I built a local React application that simulates a Salesforce Account Directory interface. The application displays a list of enterprise accounts and provides responsive, client-side functionality to:
-* **Search:** Filter accounts in real-time by their name.
-* **Sort:** Order the data by specific fields (Account Name, Industry, or Phone).
-* **Toggle Direction:** Switch between ascending and descending order.
-* **Empty States:** Display a user-friendly UI message when a search yields no matching results.
+## Salesforce Account Directory (Local React App)
 
-## How I Built It
-This project was developed using **React** and **Vite** for a fast, modern development environment.
-* **Data Source:** The application strictly parses a provided local static JSON file (`Account_Sample_Data.json`). There is **no live Salesforce integration** or external API fetching involved.
-* **Architecture:** It follows a clean, modular component structure. A main smart container (`AccountExplorer`) manages the state and logic (using `useState` and `useMemo` for optimized sorting and filtering), while a reusable presentation component (`Account`) renders each individual table row.
-* **Styling:** Custom CSS was written to closely mimic the enterprise aesthetic of the Salesforce Lightning Design System (SLDS), featuring neutral colors, clear typography, custom sort indicators, and consistent spacing.
+### What I Built
 
-## How to Install and Run
+A local React application that recreates the main functionality of the Salesforce Account Directory as a standalone web application. It displays a list of account records and allows users to search and sort the data directly in the browser.
 
-### Prerequisites
-Ensure you have [Node.js and npm](https://nodejs.org/) installed on your machine.
+**Key Features:**
+
+- **Search:** Filters accounts in real time by Account Name.
+- **Sorting:** Sorts accounts by Account Name, Industry, or Phone.
+- **Sort Direction:** Allows users to switch between ascending and descending order.
+- **Empty States:** Displays a message when no accounts match the search criteria.
+- **Responsive Interface:** Adapts the layout to different screen sizes.
+
+### How I Built It
+
+The application was developed with **React** and **Vite**, using a simple component structure to keep the search and sorting logic organized and easy to maintain.
+
+- **Data Source:** Uses a local static JSON file (`Account_Sample_Data.json`) as its only data source. The application does not connect to Salesforce or use external APIs.
+
+- **Architecture:** The main container component (`AccountExplorer`) manages the application state and the search and sorting logic using React hooks such as `useState` and `useMemo`. A reusable `Account` component is responsible for rendering each account row.
+
+- **Styling:** Uses custom CSS to create an interface inspired by the Salesforce Lightning Design System (SLDS), with clear typography, consistent spacing, neutral colors, and visual indicators for sorting.
+
+## Installation and Usage
+
+### Salesforce LWC Project
+
+#### Prerequisites
+
+- [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli) installed.
+- Visual Studio Code with the **Salesforce Extension Pack** installed.
+- A Salesforce Sandbox or Developer Edition Org.
+
+#### Installation
+
+1. **Create a Salesforce Project:**  
+   Open VS Code, press `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS), run `SFDX: Create Project`, and choose the **Standard** template.
+
+2. **Authorize your Org:**  
+   Open the command palette and run `SFDX: Authorize an Org`, then log in to your Salesforce environment.
+
+3. **Deploy the Apex classes:**  
+   Copy `AccountSearchController.cls` and `AccountSearchControllerTest.cls` into the `classes` folder of your project. Then, right-click the `classes` folder and select **SFDX: Deploy Source to Org**.
+
+4. **Deploy the LWC:**  
+   Create an LWC named `accountSearchDirectory` and add the HTML, JavaScript, and `.js-meta.xml` files. Then, right-click the `lwc` folder and select **SFDX: Deploy Source to Org**.
+
+#### Add the Component to a Salesforce Page
+
+1. Log in to your Salesforce Org and open an app with a Home page, such as the **Sales** app.
+2. Open the **Home** tab.
+3. Click the **Gear icon** in the top-right corner and select **Edit Page** to open Lightning App Builder.
+4. In the left sidebar, find the **Custom** components section.
+5. Drag the **Account Search Directory** component onto the page.
+6. Click **Save**.
+7. Click **Activate**, select **Assign as Org Default**, and save the changes.
+8. Return to the Home page and use the component.
+
+### React Application
+
+#### Prerequisites
+
+Ensure that [Node.js](https://nodejs.org/) and npm are installed on your machine.
 
 ### 1. Install Dependencies
 Open your terminal, navigate to the root folder of the project, and run the following command to install all required packages:
