@@ -21,17 +21,16 @@
 
 ## 2. Working Development Environment (15 points)
 
-### [x] Visual Studio Code and Salesforce Extension Pack working (4 points)
+- [x] Visual Studio Code and Salesforce Extension Pack working (4 points)
 ![Salesforce Extension Pack working](./img/Salesforce%20Extension%20Pack%20working.png)
-*(Opcional / Detalle extendido: `![Salesforce Extension Pack](./img/Salesforce%20Extension%20Pack.png)`)*
 
-### [x] Salesforce CLI installed and responding (4 points)
+- [x] Salesforce CLI installed and responding (4 points)
 ![Salesforce CLI installed and responding](./img/Salesforce%20CLI%20installed%20and%20responding.png)
 
-### [x] Salesforce org authenticated from VS Code or CLI (4 points)
+- [x] Salesforce org authenticated from VS Code or CLI (4 points)
 ![Salesforce org authenticated from VS Code or CLI](./img/Salesforce%20org%20authenticated%20from%20VS%20Code%20or%20CLI.png)
 
-### [x] Node.js/npm and React development environment working (3 points)
+- [x] Node.js/npm and React development environment working (3 points)
 ![Node.js/npm Working](./img/Node.js_npm%20Working.png)
 ![React Development Environment](./img/React.png)
 
@@ -50,7 +49,7 @@
 - [x] **Successful source deployment or retrieval** (5 points)  
   ![Successful source deployment or retrieval](./img/Successful%20source%20deployment%20or%20retrieval.png)
 
-**Section Score:** 15 / 15
+**Section Score:**  / 15
 
 ---
 
@@ -70,9 +69,8 @@
   ![Empty states](./img/Empty%20states.png)
 
 - [x] **Code is organized and readable** (3 points)  
-  *Evidence reference:* `proj-sf-AccountDirectory/AccountDirectoryProject_LWC`
 
-**Section Score:** 30 / 30
+**Section Score:**  / 30
 
 ---
 
@@ -94,20 +92,18 @@
 - [x] **Includes an empty state and basic professional styling** (2 points)  
   ![Empty states React](./img/Empty%20states%20React.png)
 
-**Section Score:** 15 / 15
+**Section Score:**  / 15
 
 ---
 
 ## 6. Professional Evidence (10 points)
 
 - [ ] **Individual repository or source submission** (2 points)  
-  *Evidence reference:* `[Link al Repo / Captura]`
 - [x] **README with installation and run instructions** (3 points)  
   *Evidence reference:* [`README.md`](./README.md)
 - [x] **Short AI work log** (2 points)  
   *Evidence reference:* [`AI_WORK_LOG.md`](./AI_WORK_LOG.md)
 - [ ] **Student can demonstrate and explain the work** (3 points)  
-  *Evidence reference:* `[Demostración presencial / Video]`
 
 **Section Score:**  / 10
 
