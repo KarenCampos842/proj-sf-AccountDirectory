@@ -72,11 +72,12 @@ The application was developed with **React** and **Vite**, using a simple compon
 2. **Authorize your Org:**  
    Open the command palette and run `SFDX: Authorize an Org`, then log in to your Salesforce environment.
 
-3. **Deploy the Apex classes:**  
-   Copy `AccountSearchController.cls` and `AccountSearchControllerTest.cls` into the `classes` folder of your project. Then, right-click the `classes` folder and select **SFDX: Deploy Source to Org**.
+3. ****Add the Project Files:**  
+   Copy `AccountSearchController.cls` and `AccountSearchControllerTest.cls` into the `classes` folder of your project. 
+   Create an LWC named `accountSearchDirectory` and add the HTML, JavaScript, and `.js-meta.xml` files. 
 
-4. **Deploy the LWC:**  
-   Create an LWC named `accountSearchDirectory` and add the HTML, JavaScript, and `.js-meta.xml` files. Then, right-click the `lwc` folder and select **SFDX: Deploy Source to Org**.
+4. **Deploy the Apex classes and the LWC:**  
+   Right-click the `classes` folder and select **SFDX: Deploy Source to Org**. Then, right-click the `lwc` folder and select **SFDX: Deploy Source to Org**.
 
 #### Add the Component to a Salesforce Page
 
