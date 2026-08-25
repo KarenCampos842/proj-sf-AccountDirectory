@@ -72,7 +72,7 @@ The application was developed with **React** and **Vite**, using a simple compon
 2. **Authorize your Org:**  
    Open the command palette and run `SFDX: Authorize an Org`, then log in to your Salesforce environment.
 
-3. ****Add the Project Files:**  
+3. **Add the Project Files:**  
    Copy `AccountSearchController.cls` and `AccountSearchControllerTest.cls` into the `classes` folder of your project. 
    Create an LWC named `accountSearchDirectory` and add the HTML, JavaScript, and `.js-meta.xml` files. 
 
@@ -81,7 +81,8 @@ The application was developed with **React** and **Vite**, using a simple compon
 
 #### Add the Component to a Salesforce Page
 
-1. Log in to your Salesforce Org and open an app with a Home page, such as the **Sales** app.
+1. Log in to your Salesforce Org and open an app with a Home page, such as the **Nonprofit Success Pack
+or Sales** app.
 2. Open the **Home** tab.
 3. Click the **Gear icon** in the top-right corner and select **Edit Page** to open Lightning App Builder.
 4. In the left sidebar, find the **Custom** components section.
