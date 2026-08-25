@@ -1,0 +1,50 @@
+[
+  {
+    "id": "001A000000Alux",
+    "name": "Alux Studio",
+    "industry": "Design",
+    "phone": "+52 999 000 1001"
+  },
+  {
+    "id": "001A000000Ceno",
+    "name": "Cenote Systems",
+    "industry": "Technology",
+    "phone": "+52 999 000 1002"
+  },
+  {
+    "id": "001A000000Ceib",
+    "name": "Ceiba Market",
+    "industry": "Retail",
+    "phone": "+52 999 000 1003"
+  },
+  {
+    "id": "001A000000Hene",
+    "name": "Henequen Works",
+    "industry": "Manufacturing",
+    "phone": "+52 999 000 1004"
+  },
+  {
+    "id": "001A000000Itza",
+    "name": "Itza Logistics",
+    "industry": "Transportation",
+    "phone": "+52 999 000 1005"
+  },
+  {
+    "id": "001A000000Jade",
+    "name": "Jade Health",
+    "industry": "Healthcare",
+    "phone": "+52 999 000 1006"
+  },
+  {
+    "id": "001A000000Kuku",
+    "name": "Kukulkan Learning",
+    "industry": "Education",
+    "phone": "+52 999 000 1007"
+  },
+  {
+    "id": "001A000000Maya",
+    "name": "Maya Solar",
+    "industry": "Energy",
+    "phone": "+52 999 000 1008"
+  }
+]

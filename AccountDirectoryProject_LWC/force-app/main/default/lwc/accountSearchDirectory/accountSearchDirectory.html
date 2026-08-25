@@ -1,0 +1,107 @@
+<template>
+    <lightning-card title="Account Directory" icon-name="standard:account">
+
+        <!--
+            Search + sort toolbar. Every control here updates a reactive property that the
+            @wire service in the JS controller listens to, so changing any of them
+            automatically re-runs the Apex query.
+        -->
+        <div class="slds-m-horizontal_medium slds-m-top_small slds-m-bottom_medium">
+            <lightning-layout vertical-align="end" multiple-rows="true" pull-to-boundary="small">
+
+                <!-- Search Input -->
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="7" padding="horizontal-small" class="slds-m-bottom_small">
+                    <lightning-input
+                        type="search"
+                        label="Search Accounts"
+                        placeholder="Type a name to search..."
+                        onchange={handleSearchTermChange}
+                        is-loading={isLoading}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <!-- Sort Field Dropdown -->
+                <lightning-layout-item size="10" small-device-size="10" medium-device-size="4" padding="horizontal-small" class="slds-m-bottom_small">
+                    <lightning-combobox
+                        label="Sort By"
+                        value={sortField}
+                        options={sortOptions}
+                        onchange={handleSortFieldChange}>
+                    </lightning-combobox>
+                </lightning-layout-item>
+
+                <!-- Sort Direction Toggle Button -->
+                <lightning-layout-item size="2" small-device-size="2" medium-device-size="1" padding="horizontal-small" class="slds-m-bottom_small">
+                    <lightning-button-icon
+                        icon-name={sortIconName}
+                        alternative-text="Toggle Sort Direction"
+                        title="Toggle Sort Direction"
+                        onclick={toggleSortDirection}
+                        variant="border-filled">
+                    </lightning-button-icon>
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </div>
+
+        <!--
+            Loading / Error / Data / Empty states below are driven by JS getters that are each
+            gated on !isLoading, so exactly one of these four blocks is visible at a time.
+        -->
+
+        <!-- Loading State -->
+        <template if:true={isLoading}>
+            <div class="slds-is-relative slds-p-around_large">
+                <lightning-spinner alternative-text="Loading data..." size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- Error State -->
+        <template if:true={hasError}>
+            <div class="slds-box slds-theme_error slds-theme_alert-texture slds-m-around_medium">
+                <lightning-icon icon-name="utility:error" variant="inverse" size="small" class="slds-m-right_x-small"></lightning-icon>
+                {errorMessage}
+            </div>
+        </template>
+
+        <!-- Data State: Responsive Grid Layout -->
+        <template if:true={hasAccounts}>
+            <lightning-layout multiple-rows="true" class="slds-p-horizontal_small slds-p-bottom_medium">
+                <template for:each={accounts} for:item="account">
+                    <lightning-layout-item key={account.Id} size="12" small-device-size="6" medium-device-size="4" padding="around-small">
+
+                        <article class="slds-box slds-theme_default slds-box_small slds-m-bottom_none">
+                            <div class="slds-media slds-media_center">
+                                <div class="slds-media__figure">
+                                    <lightning-icon icon-name="standard:account" size="medium"></lightning-icon>
+                                </div>
+                                <div class="slds-media__body">
+                                    <h2 class="slds-truncate slds-text-heading_small slds-text-title_bold" title={account.Name}>
+                                        {account.Name}
+                                    </h2>
+                                    <p class="slds-truncate slds-text-color_weak" title={account.Industry}>
+                                        {account.Industry}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="slds-m-top_small slds-p-top_small slds-border_top">
+                                <lightning-formatted-phone value={account.Phone}></lightning-formatted-phone>
+                            </div>
+                        </article>
+
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </template>
+
+        <!-- Empty State -->
+        <template if:true={isDirectoryEmpty}>
+            <div class="slds-text-align_center slds-p-around_large slds-text-color_weak">
+                <lightning-icon icon-name="utility:search" size="large" class="slds-m-bottom_small slds-icon-text-light"></lightning-icon>
+                <p class="slds-text-heading_small">No accounts found matching your search.</p>
+                <p class="slds-text-body_small slds-m-top_xx-small">Please check the spelling or try a different name.</p>
+            </div>
+        </template>
+
+    </lightning-card>
+</template>
