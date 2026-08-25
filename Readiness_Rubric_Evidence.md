@@ -98,7 +98,8 @@
 
 ## 6. Professional Evidence (10 points)
 
-- [ ] **Individual repository or source submission** (2 points)  
+- [X] **Individual repository or source submission** (2 points) 
+  https://github.com/KarenCampos842/proj-sf-AccountDirectory.git
 - [x] **README with installation and run instructions** (3 points)  
   *Evidence reference:* [`README.md`](./README.md)
 - [x] **Short AI work log** (2 points)  
