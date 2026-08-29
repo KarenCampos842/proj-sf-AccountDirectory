@@ -1,7 +1,9 @@
 # proj-sf-AccountDirectory
 
 Salesforce projects and Trailhead-related work developed as part of my software engineering studies.
+
 demo: https://github.com/KarenCampos842/proj-sf-AccountDirectory/tree/main/demo-video
+
 demo (YouTube): https://youtu.be/8JIq6EI-r_c
 
 ## Account Search Directory (LWC)
